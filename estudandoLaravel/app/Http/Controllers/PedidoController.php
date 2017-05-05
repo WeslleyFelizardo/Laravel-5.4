@@ -11,11 +11,15 @@ use Session;
 
 class PedidoController extends Controller
 {
-	private $itensCarrinho = null; 
+	  private $itensCarrinho = null;
+
+    public function __construct() {
+      //$this->middleware('autorizador', ['only' =>['finalizar', 'lista']]);
+    }
 
     public function index(Request $request) {
     	$this->itensCarrinho = $request->session()->get('carrinho');	
-    	//dd($this->itensCarrinho);
+    	
     	return view('pedido.carrinho')->with('itens', sizeof($this->itensCarrinho) > 0 ? $this->itensCarrinho : null)->with('total', $this->calcularTotalCarrinho());
     }
 
@@ -25,9 +29,9 @@ class PedidoController extends Controller
       //date('d/m/y') 
       $pedido = new Pedido;
       $pedido->data_pedido = date('d/m/y');
-      $pedido->valor = 100;
+      $pedido->valor = $this->calcularTotalCarrinho();
       $pedido->estado = "Aguardando Pagamento";
-      $pedido->user_id = 1;
+      $pedido->user_id = 1; // ainda falta pegar o id do usuario atual logado no sistema
       $pedido->save();
 
       $livros = array();
@@ -39,6 +43,7 @@ class PedidoController extends Controller
       $pedido->livros()->sync($livros);
       $request->session()->forget('carrinho');
 
+      return view('pedido.finalizado')->with('dadosPedido', 'teste');
     }
 
     public function lista() {
