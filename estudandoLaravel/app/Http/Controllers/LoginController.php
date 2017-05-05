@@ -27,4 +27,9 @@ class LoginController extends Controller
 
     	return redirect('/');
     }
+
+    public function cadastro() {
+
+        return view('login.cadastro');
+    }
 }

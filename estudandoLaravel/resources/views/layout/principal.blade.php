@@ -41,7 +41,7 @@
           <ul class="nav navbar-nav">
                     @if(Auth::guest())
                     <li>
-                        <a href="#">Cadastra-se</a>
+                        <a href="/login/cadastro">Cadastra-se</a>
                     </li>
                     @else
                     <li>

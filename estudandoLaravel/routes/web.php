@@ -18,6 +18,8 @@ Route::get('/categoria/{id}', 'CategoriaController@filtroPorCategoria');
 
 Route::get('/login', 'LoginController@login');
 
+Route::get('/login/cadastro', 'LoginController@cadastro');
+
 Route::post('/login/logar', 'LoginController@logar');
 
 Route::get('/login/logout', 'LoginController@logout');
