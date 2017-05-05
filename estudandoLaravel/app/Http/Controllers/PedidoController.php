@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Categoria;
 use App\Livro;
+use App\Pedido;
+use Auth;
 use Session;
 
 class PedidoController extends Controller
@@ -17,8 +19,31 @@ class PedidoController extends Controller
     	return view('pedido.carrinho')->with('itens', sizeof($this->itensCarrinho) > 0 ? $this->itensCarrinho : null)->with('total', $this->calcularTotalCarrinho());
     }
 
+    public function finalizar(Request $request) {
+
+      $this->itensCarrinho = $request->session()->get('carrinho');
+      //date('d/m/y') 
+      $pedido = new Pedido;
+      $pedido->data_pedido = date('d/m/y');
+      $pedido->valor = 100;
+      $pedido->estado = "Aguardando Pagamento";
+      $pedido->user_id = 1;
+      $pedido->save();
+
+      $livros = array();
+
+      foreach ($this->itensCarrinho as $item) {
+        array_push($livros, $item["id"]);
+      }
+
+      $pedido->livros()->sync($livros);
+      $request->session()->forget('carrinho');
+
+    }
+
     public function lista() {
-    	return view('pedido.listagem')->with('categorias', Categoria::all());
+      //dd(Pedido::where('user_id', 1)->get()->first()->id);
+    	return view('pedido.listagem')->with('categorias', Categoria::all())->with('pedidos', Pedido::where('user_id', Auth::user()->id)->get());
     }
 
     public function carrinho(Request $request, $id) {

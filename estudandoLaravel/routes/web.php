@@ -29,3 +29,7 @@ Route::get('/carrinho/{id}', 'PedidoController@carrinho');
 Route::get('/carrinho', 'PedidoController@index');
 
 Route::get('/carrinho/remover/{id}', 'PedidoController@excluir');
+
+Route::get('/pedido', 'PedidoController@listar');
+
+Route::get('/pedido/finalizar', 'PedidoController@finalizar');

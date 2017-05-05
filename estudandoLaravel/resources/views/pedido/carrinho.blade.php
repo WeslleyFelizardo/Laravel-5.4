@@ -42,7 +42,7 @@
 	
 	<div class="col-md-12">
 		<a href="/" class="btn btn-info">Continuar Comprando</a>
-		<a href="" class="btn btn-success">Finalizar Compra</a>
+		<a href="/pedido/finalizar" class="btn btn-success">Finalizar Compra</a>
 	</div>
 </div>
 </div>
