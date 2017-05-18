@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+
+use Illuminate\Http\Request;
 use Auth;
 use App\Categoria;
+use App\User;
 
-class LoginController extends Controller
+class UserController extends Controller
 {
     public function login() {
     	return view('login.login');
@@ -31,5 +33,18 @@ class LoginController extends Controller
     public function cadastro() {
 
         return view('login.cadastro');
+    }
+
+    public function inserirUser(Request $request){
+        $user = new User;
+        
+        $user->name = $request->input("nome");
+        $user->email = $request->input("email");
+        $user->password = bcrypt($request->input("password"));
+        $user->endereco = $request->input("endereco");
+
+        $user->save();
+
+        return redirect("/");
     }
 }

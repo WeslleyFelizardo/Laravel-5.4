@@ -41,7 +41,7 @@
           <ul class="nav navbar-nav">
                     @if(Auth::guest())
                     <li>
-                        <a href="/login/cadastro">Cadastra-se</a>
+                        <a href="/user/cadastro">Cadastra-se</a>
                     </li>
                     @else
                     <li>
@@ -54,7 +54,7 @@
                 </ul>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" action="login/logar" method="post">
+          <form class="navbar-form navbar-right" action="user/logar" method="post">
           @if(Auth::guest())
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">

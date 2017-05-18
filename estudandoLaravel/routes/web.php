@@ -16,13 +16,15 @@ Route::get('/categoria/lista', 'CategoriaController@lista');
 
 Route::get('/categoria/{id}', 'CategoriaController@filtroPorCategoria');
 
-Route::get('/login', 'LoginController@login');
+Route::get('/user', 'LoginController@login');
 
-Route::get('/login/cadastro', 'LoginController@cadastro');
+Route::get('/user/cadastro', 'UserController@cadastro');
 
-Route::post('/login/logar', 'LoginController@logar');
+Route::post('/user/inserir', 'UserController@inserirUser');
 
-Route::get('/login/logout', 'LoginController@logout');
+Route::post('/user/logar', 'UserController@logar');
+
+Route::get('/user/logout', 'UserController@logout');
 
 Route::get('/pedido/lista', 'PedidoController@lista');
 

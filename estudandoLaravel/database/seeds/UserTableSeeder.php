@@ -19,8 +19,8 @@ class UserTableSeeder extends Seeder
             'name' => 'Weslley Felizardo',
             'email' => 'weslleyfelizardo1996@gmail.com',
             'password' => bcrypt('w10felizardo'),
-            'endereco' => 'Avenida das Castanheiras, 243 - Jardim Samambaia',
-            'endereco_entrega' => 'Avenida das Castanheiras, 243 - Jardim Samambaia'
+            'endereco' => 'Avenida das Castanheiras, 243 - Jardim Samambaia'
+            
             ]
         ]);
     }
