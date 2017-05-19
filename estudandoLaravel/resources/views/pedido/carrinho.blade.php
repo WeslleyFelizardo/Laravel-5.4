@@ -7,6 +7,7 @@
 @if($itens != null)
 	<table class="table table-hover">
 		<tr>
+			
 			<th>Produto</th>
 			<th>Preço unitário</th>
 			<th>Quantidade</th>
@@ -15,6 +16,7 @@
 		</tr>
 		@foreach($itens as $item)
 		<tr>
+			<!-- <td><img src="{{asset('img/javaee.jpg')}}" width="50" height="50" /></td> -->
 			<td>{{$item["nome"]}}</td>
 			<td>{{number_format($item["valor"], 2, ',', '.')}}</td>
 			<td>
