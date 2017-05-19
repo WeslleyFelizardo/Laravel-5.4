@@ -72,11 +72,12 @@ class PedidoController extends Controller
     public function excluir(Request $request, $id) {
       //$request->session()->forget('carrinho');
     	$this->itensCarrinho = $request->session()->get('carrinho');
-    	//dd($this->itensCarrinho);
+    	
     	$key = array_search(Livro::find($id)->id, array_column($this->itensCarrinho,"id"));
-
+      
     	unset($this->itensCarrinho[$key]);
-    	//dd($this->itensCarrinho[0]);
+      //dd($key);
+    	//dd($this->itensCarrinho);
     	$request->session()->put('carrinho', $this->itensCarrinho);
 
     	return redirect('/carrinho')->with('itens', $this->itensCarrinho)->with('total', $this->calcularTotalCarrinho());

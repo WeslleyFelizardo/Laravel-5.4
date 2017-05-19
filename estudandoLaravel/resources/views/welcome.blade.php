@@ -3,9 +3,10 @@
                 <div class="row">
                 @if($livros != null)
                 @foreach($livros as $livro)
+                
                      <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img src="{{asset('img/javaee.jpg')}}" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">${{ $livro->valor }}</h4>
                                 <h4><a href="#">{{ $livro->nome }}</a>
