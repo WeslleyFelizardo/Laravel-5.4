@@ -6,7 +6,7 @@
                 
                      <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="{{asset('img/javaee.jpg')}}" alt="">
+                            <img src="{{asset($livro->imagem)}}" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">${{ $livro->valor }}</h4>
                                 <h4><a href="#">{{ $livro->nome }}</a>
