@@ -54,7 +54,7 @@
                 </ul>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" action="user/logar" method="post">
+          <form class="navbar-form navbar-right" action="/user/logar" method="post">
           @if(Auth::guest())
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">
@@ -66,7 +66,7 @@
             <button type="submit" class="btn btn-success">Entrar</button>
           </form>
           @else
-          <a href="/login/logout" class="btn btn-danger">Sair</a>
+          <a href="/user/logout" class="btn btn-danger">Sair</a>
           @endif
         </div><!--/.navbar-collapse -->
       </div>

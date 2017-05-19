@@ -53,7 +53,7 @@ class PedidoController extends Controller
 
     public function carrinho(Request $request, $id) {
     	$produto = Livro::find($id);
-    	$produtoAdicionado = ["id" => $produto->id, "nome" => $produto->nome, "valor" => $produto->valor, "quantidade" => 1, "subtotal" => $produto->valor];
+    	$produtoAdicionado = ['id' => $produto->id, 'nome' => $produto->nome, 'valor' => $produto->valor, 'quantidade' => 1, 'subtotal' => $produto->valor];
 
     	 $jaTem = $this->buscarItemCarrinho($request, $id) == 0 ? true : false;
        
@@ -70,14 +70,16 @@ class PedidoController extends Controller
     }
 
     public function excluir(Request $request, $id) {
-      //$request->session()->forget('carrinho');
-    	$this->itensCarrinho = $request->session()->get('carrinho');
-    	
-    	$key = array_search(Livro::find($id)->id, array_column($this->itensCarrinho,"id"));
       
-    	unset($this->itensCarrinho[$key]);
-      //dd($key);
-    	//dd($this->itensCarrinho);
+    	$this->itensCarrinho = $request->session()->get('carrinho');
+      
+      foreach ($this->itensCarrinho as $key => $value) {
+        if ($value['id'] == $id) {
+          unset($this->itensCarrinho[$key]);
+        }
+      }
+        
+      
     	$request->session()->put('carrinho', $this->itensCarrinho);
 
     	return redirect('/carrinho')->with('itens', $this->itensCarrinho)->with('total', $this->calcularTotalCarrinho());

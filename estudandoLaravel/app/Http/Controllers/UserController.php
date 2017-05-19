@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Http\Request;
+use Request;
 use Auth;
 use App\Categoria;
 use App\User;
 
 class UserController extends Controller
 {
-    public function login() {
-    	return view('login.login');
-    }
+    // public function login() {
+    // 	return view('login.login');
+    // }
 
     public function logar() {
     	$credenciais = Request::only('email', 'password');
