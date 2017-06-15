@@ -13,7 +13,7 @@
 			<tr>
 				<td>{{ $pedido->id }}</td>
 				<td>{{ $pedido->data_pedido }}</td>
-				<td>{{ $pedido->valor }}</td>
+				<td>{{number_format($pedido->valor, 2, ',', '.')}}</td>
 				<td>{{ $pedido->estado }}</td>
 				<td><a>Detalhes</a></td>
 			</tr>

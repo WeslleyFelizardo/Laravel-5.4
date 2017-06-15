@@ -37,3 +37,5 @@ Route::get('/carrinho/remover/{id}', 'PedidoController@excluir');
 Route::get('/pedido', 'PedidoController@listar');
 
 Route::get('/pedido/finalizar', 'PedidoController@finalizar');
+
+Route::get('/manutencaolivro', 'LivroController@lista');

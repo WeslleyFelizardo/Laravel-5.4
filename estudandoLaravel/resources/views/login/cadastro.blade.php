@@ -6,6 +6,7 @@
 <hr/>
 <form action="/user/inserir" method="post">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
+  <input type="hidden" name="permissao_id" value="1">
   <div class="form-group">
 	 <label for="exampleInputEmail1">Nome</label>
 	 <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">

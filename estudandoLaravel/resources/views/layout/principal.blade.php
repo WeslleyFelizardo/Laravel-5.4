@@ -43,14 +43,36 @@
                     <li>
                         <a href="/user/cadastro">Cadastra-se</a>
                     </li>
-                    @else
+                    @elseif(Auth::user()->permissao_id == 1)
                     <li>
                         <a href="/pedido/lista">Meus Pedidos</a>
                     </li>               
-                    @endif  
+                    
                     <li>
                         <a href="/carrinho">Carrinho</a>
                     </li>
+                    @else
+                    <li>
+                        <a href="/carrinho">Todos os Pedidos</a>
+                    </li>
+                    <li>
+                       
+                          <a class="dropdown-toggle"id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Manutenções
+                            <span class="caret"></span>
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">Usuário</a></li>
+                            <li><a href="#">Categoria</a></li>
+                            <li><a href="/manutencaolivro">Livro</a></li>
+                            <!-- <li role="separator" class="divider"></li> -->
+                            
+                          </ul>
+                        
+                    </li> 
+                    
+                    @endif  
+
                 </ul>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
